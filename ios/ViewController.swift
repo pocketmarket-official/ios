@@ -7,7 +7,6 @@
 
 import UIKit
 import WebKit
-import SafariServices
 
 
 class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKScriptMessageHandler {
@@ -90,11 +89,11 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
         self.webView?.evaluateJavaScript("makeFcmTokenCookie('\(token!)')", completionHandler: { result, error in
             if let anError = error {
-//                let alert = UIAlertController(title: "포켓마켓", message: "[오류] FCM TOKEN 오류 발생\n\(anError)", preferredStyle: UIAlertController.Style.alert)
-//
-//                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
-//                }))
-//                self.present(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title: "포켓마켓", message: "[오류] FCM TOKEN 오류 발생\n\(anError)", preferredStyle: UIAlertController.Style.alert)
+
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+                }))
+                self.present(alert, animated: true, completion: nil)
                 print("fcm error occured")
             }
         })
@@ -221,6 +220,4 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
             }
         }
     }
-    
-    
 }
