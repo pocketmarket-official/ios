@@ -20,7 +20,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
     var strErrMsg: String = ""
     var token: String!
 
-    func test() -> Bool {
+    func getFcmToken() -> Bool {
         let delegate = UIApplication.shared.delegate as! AppDelegate
         
         token = delegate.token
@@ -163,7 +163,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, WKSc
         WKWebsiteDataStore.default().removeData(ofTypes: websiteDataTypes as! Set, modifiedSince: date as Date, completionHandler:{
             //remove callback
 //            print("cache, cookies remove success!")
-            self.test()
+            self.getFcmToken()
             print("cache remove success!")
         })
         
